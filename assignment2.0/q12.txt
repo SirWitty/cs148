@@ -1,0 +1,2 @@
+sum(fldNumStudents - fldMaxStudents)
+930

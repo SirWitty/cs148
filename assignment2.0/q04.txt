@@ -1,0 +1,2 @@
+pmkCourseId	fldCourseNumber	fldCourseName	fldDepartment	fldCredits
+392	148	Database Design for the Web	CS	3

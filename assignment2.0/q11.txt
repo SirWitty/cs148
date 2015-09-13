@@ -1,0 +1,4 @@
+fnkCourseId	count(fnkCourseId)
+157	50
+333	89
+640	64
