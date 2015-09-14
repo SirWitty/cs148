@@ -14,14 +14,7 @@
             print '<li class="activePage">Display Tables</li>';
         } else {
             print '<li><a href="tables.php">Display Tables</a></li>';
-        }
-        
-        if ($path_parts['filename'] == "populate-table.php") {
-            print '<li class="activePage">Populate Tables</li>';
-        } else {
-            print '<li><a href="populate-table.php">Populate Tables</a></li>';
-        }
-        
+        }        
         ?>
     </ol>
 </nav>

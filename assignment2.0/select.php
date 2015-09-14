@@ -19,86 +19,16 @@
         <h1>Samuel William Reinhardt</h1>
 	<h2>CS148 - Assignment2.0</h2>      
         <p> These SQL queries are designed to be used on the UVM_Courses database.
-                <ul>
-                        <li>Question 1
-                                <ul>
-                                        <li><a href='q01.sql'>SQL script</a></li>
-					<li><a href='q01.txt'>Output</a></li>
-                                </ul>
-                        </li>
-			<li>Question 2
-                                <ul>
-                                        <li><a href='q02.sql'>SQL script</a></li>
-                                        <li><a href='q02.txt'>Output</a></li>
-                                </ul>
-                        </li>
-			<li>Question 3
-                                <ul>
-                                        <li><a href='q03.sql'>SQL script</a></li>
-                                        <li><a href='q03.txt'>Output</a></li>
-                                </ul>
-                        </li>
-                        <li>Question 4
-                                <ul>
-                                        <li><a href='q04.sql'>SQL script</a></li>
-                                        <li><a href='q04.txt'>Output</a></li>
-                                </ul>
-                        </li>
-			<li>Question 5
-                                <ul>
-                                        <li><a href='q05.sql'>SQL script</a></li>
-                                        <li><a href='q05.txt'>Output</a></li>
-                                </ul>
-                        </li>
-                        <li>Question 6
-                                <ul>
-                                        <li><a href='q06.sql'>SQL script</a></li>
-                                        <li><a href='q06.txt'>Output</a></li>
-                                </ul>
-                        </li>
-			<li>Question 7
-                                <ul>
-                                        <li><a href='q07.sql'>SQL script</a></li>
-                                        <li><a href='q07.txt'>Output</a></li>
-                                </ul>
-                        </li>
-                        <li>Question 8
-                                <ul>
-                                        <li><a href='q08.sql'>SQL script</a></li>
-                                        <li><a href='q08.txt'>Output</a></li>
-                                </ul>
-                        </li>
-			<li>Question 9
-                                <ul>
-                                        <li><a href='q09.sql'>SQL script</a></li>
-                                        <li><a href='q09.txt'>Output</a></li>
-                                </ul>
-                        </li>
-                        <li>Question 10
-                                <ul>
-                                        <li><a href='q10.sql'>SQL script</a></li>
-                                        <li><a href='q10.txt'>Output</a></li>
-                                </ul>
-                        </li>
-			<li>Question 11
-                                <ul>
-                                        <li><a href='q11.sql'>SQL script</a></li>
-                                        <li><a href='q11.txt'>Output</a></li>
-                                </ul>
-                        </li>
-                        <li>Question 12
-                                <ul>
-                                        <li><a href='q12.sql'>SQL script</a></li>
-                                        <li><a href='q12.txt'>Output</a></li>
-                                </ul>
-                        </li>
-
-                </ul>
+		<ul>
+		<?php for($number=1; $number <= 12; $number++):
+			$num = $number;
+			if ($number<10) $num = '0' . $num; ?>
+			<li>q<?php echo $num ?>. <a href='display.php?number=q<?php echo $num ?>'>SQL</a> <code><?php echo file_get_contents('q' . $num . '.sql');?></code></li>			
+		<?php endfor; ?>
+		</ul>
         </p>
 </main>
 
 <section class='sidebar right-sidebar image-view'></section>
 </body>
-</html
-~
-
+</html>
