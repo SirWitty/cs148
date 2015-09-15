@@ -1,1 +1,1 @@
-select pmkNetId from tblTeachers;
+SELECT pmkNetId FROM tblTeachers;

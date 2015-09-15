@@ -320,22 +320,22 @@ class Database {
     //  $spacesAllowed are %20 and not a blank space
     //  $semiColonAllowed is ; and generally you do not have them in your query
     //
-    public function select($query, $values = "", $wheres = 1, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false) {
+    public function select($query, $values = "", $wheres = 1, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false, $fetchStyleAssoc = false) {
 
         if ($wheres != $this->countWhere($query)) {
-            return "";
+            echo 'w';return "";
         }
 
         if ($conditions != $this->countConditions($query)) {
-            return "";
+            echo 'c';return "";
         }
 
         if ($quotes != $this->countQuotes($query)) {
-            return "";
+            echo 'q';return "";
         }
 
         if ($symbols != $this->countSymbols($query)) {
-            return "";
+            echo 's';return "";
         }
 
         if ($quotes == 0 AND $symbols == 0) {
@@ -349,8 +349,11 @@ class Database {
         } else {
             $statement->execute();
         }
-
-        $recordSet = $statement->fetchAll();
+	
+	if ($fetchStyleAssoc)
+	    $recordSet = $statement->fetchAll(PDO::FETCH_ASSOC);
+	else
+	    $recordSet = $statement->fetchAll();
 
         $statement->closeCursor();
 
