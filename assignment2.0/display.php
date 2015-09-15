@@ -50,7 +50,7 @@ error_reporting(E_ALL); ?>
 			$whereCount = substr_count($pretty_code,'WHERE'); //counting all values bob's code requires (since we already case forced). Kinda cheating his system actually, but otherwise can't do robust dynamic queries.
 			$conditions = [' AND ', ' OR ', ' XOR ', ' NOT ', ' && ', ' || ', ' ! '];
 			$conditionCount = 0;
-			foreach($conditions as $condition){$conditionCount += substr_count($pretty_code,$condition);}echo $conditionCount;
+			foreach($conditions as $condition){$conditionCount += substr_count($pretty_code,$condition);}
 			$quotes = ['"', "'", '#34', '#39', '&QUOT'];
 			$quoteCount = 0;
 			foreach($quotes as $quote){$quoteCount += substr_count($pretty_code,$quote);}
