@@ -10,6 +10,7 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<?php require_once('../bin/prettyCode.php'); ?>
 </head>
 <body>
 <section class='sidebar left-sidebar'>
@@ -23,7 +24,7 @@
 		<?php for($number=1; $number <= 12; $number++):
 			$num = $number;
 			if ($number<10) $num = '0' . $num; ?>
-			<li>q<?php echo $num ?>. <a href='display.php?number=q<?php echo $num ?>'>SQL</a> <code><?php echo file_get_contents('q' . $num . '.sql');?></code></li>			
+			<li>q<?php echo $num ?>. <a href='display.php?number=q<?php echo $num ?>'>SQL query results.</a> <code><?php echo prettify(file_get_contents('q' . $num . '.sql'));?></code></li>			
 		<?php endfor; ?>
 		</ul>
         </p>

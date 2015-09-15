@@ -10,7 +10,9 @@ error_reporting(E_ALL); ?>
         <meta name="description" content="Homework Assignment 2.0 for CS148">
         <meta name="author" content="Samuel William Reinhardt">
 
-	<?php require_once( "../bin/Database.php"); ?>	
+	<?php 	require_once( "../bin/Database.php"); 	
+		require_once("../bin/prettyCode.php"); 
+		require_once("../bin/countCode.php"); ?>
 
         <link rel='stylesheet' type="text/css" href='../../style.css'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -42,11 +44,6 @@ error_reporting(E_ALL); ?>
         <p> 	Given the following query...
 	
 		<?php 
-			//This'll be fun... fixing lowercase sql reserved words and putting them into spans + satisfying bob's parameters 
-			$lowerList = ['select ', ' as ', ' from ', 'where ', 'like ', 'and ', 'lower(', 'count(', 'distinct ', 'group ', 'order ', 'by ', 'sum(', 'having ', ')'];
-			$upper_replace = array_map('strtoupper',$lowerList);
-			$pretty_code = str_replace($lowerList, $upper_replace, $query); //replace lowercase with uppers
-			
 			$whereCount = substr_count($pretty_code,'WHERE'); //counting all values bob's code requires (since we already case forced). Kinda cheating his system actually, but otherwise can't do robust dynamic queries.
 			$conditions = [' AND ', ' OR ', ' XOR ', ' NOT ', ' && ', ' || ', ' ! '];
 			$conditionCount = 0;
@@ -55,13 +52,12 @@ error_reporting(E_ALL); ?>
 			$quoteCount = 0;
 			foreach($quotes as $quote){$quoteCount += substr_count($pretty_code,$quote);}
 			$symbolCount = substr_count($pretty_code,'<') +  substr_count($pretty_code,'>');
+			$counts = countify($query);
+			$results = $thisDatabaseReader->select($pretty_code, "", counts['where'], counts['condition'], counts['quote'], counts['symbol'], false, false, true);//running     capitalized code so that table headers aren't chopped oddly
 
-			$results = $thisDatabaseReader->select($pretty_code, "", $whereCount, $conditionCount, $quoteCount, $symbolCount, false, false, true);//running     capitalized code so that table headers aren't chopped oddly
-
-			$color_replace = array_map(function($value){ return '<span class="sql-reserved">'.$value.'</span>';}, $upper_replace); 
-			$pretty_code = str_replace($upper_replace, $color_replace, $pretty_code); //wrap reserved in span
+			$prettyCode = prettify($query); //wrap reserved in span
 		?>
-		<code><?php echo $pretty_code;?><span class='sql-reserved'>;</span></code>
+		<code><?php echo $prettyCode;?><span class='sql-reserved'>;</span></code>
 		... we are given the below table, with <?php echo count($results); ?> rows.
 		<div class='table'>
 			<div class='table-row'>
