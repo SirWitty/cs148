@@ -43,22 +43,23 @@ error_reporting(E_ALL); ?>
 	
 		<?php 
 			//This'll be fun... fixing lowercase sql reserved words and putting them into spans + satisfying bob's parameters 
-			$lowerList = ['select ', 'from ', 'where ', 'like ', 'and ', 'lower(', 'count(', 'distinct ', 'group ', 'order ', 'by ', 'sum(', 'having ', ') '];
+			$lowerList = ['select ', ' as ', ' from ', 'where ', 'like ', 'and ', 'lower(', 'count(', 'distinct ', 'group ', 'order ', 'by ', 'sum(', 'having ', ')'];
 			$upper_replace = array_map('strtoupper',$lowerList);
 			$pretty_code = str_replace($lowerList, $upper_replace, $query); //replace lowercase with uppers
 			
 			$whereCount = substr_count($pretty_code,'WHERE'); //counting all values bob's code requires (since we already case forced). Kinda cheating his system actually, but otherwise can't do robust dynamic queries.
 			$conditions = [' AND ', ' OR ', ' XOR ', ' NOT ', ' && ', ' || ', ' ! '];
 			$conditionCount = 0;
-			foreach($conditions as $condition){$conditionCount += substr_count($pretty_code,$condition);}
+			foreach($conditions as $condition){$conditionCount += substr_count($pretty_code,$condition);}echo $conditionCount;
 			$quotes = ['"', "'", '#34', '#39', '&QUOT'];
 			$quoteCount = 0;
 			foreach($quotes as $quote){$quoteCount += substr_count($pretty_code,$quote);}
 			$symbolCount = substr_count($pretty_code,'<') +  substr_count($pretty_code,'>');
 
+			$results = $thisDatabaseReader->select($pretty_code, "", $whereCount, $conditionCount, $quoteCount, $symbolCount, false, false, true);//running     capitalized code so that table headers aren't chopped oddly
+
 			$color_replace = array_map(function($value){ return '<span class="sql-reserved">'.$value.'</span>';}, $upper_replace); 
 			$pretty_code = str_replace($upper_replace, $color_replace, $pretty_code); //wrap reserved in span
-			$results = $thisDatabaseReader->select($query, "", $whereCount, $conditionCount, $quoteCount, $symbolCount, false, false, true);
 		?>
 		<code><?php echo $pretty_code;?><span class='sql-reserved'>;</span></code>
 		... we are given the below table, with <?php echo count($results); ?> rows.

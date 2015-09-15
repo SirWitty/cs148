@@ -1,2 +1,0 @@
-count(distinct fldDepartment)
-133

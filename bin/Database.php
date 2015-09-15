@@ -106,17 +106,16 @@ class Database {
         $xorCount = 0;
 
         $andCount = substr_count(strtoupper($query), ' AND ');
-        $andCount = $andCount + substr_count(strtoupper($query), ')AND');
+        $andCount = $andCount + substr_count(strtoupper($query), ')AND ');
         $andCount = $andCount + substr_count(strtoupper($query), '&&');
 
-        $notCount = substr_count(strtoupper($query), ' NOT');
-        $notCount = $notCount + substr_count(strtoupper($query), ')NOT');
+        $notCount = substr_count(strtoupper($query), ' NOT ');
+        $notCount = $notCount + substr_count(strtoupper($query), ')NOT ');
         $notCount = $notCount + substr_count(strtoupper($query), '!');
 
-        $orCount = substr_count(strtoupper($query), ' OR');
-        $orCount = $orCount + substr_count(strtoupper($query), ')OR');
+        $orCount = substr_count(strtoupper($query), ' OR ');
+        $orCount = $orCount + substr_count(strtoupper($query), ')OR ');
         $orCount = $orCount + substr_count(strtoupper($query), '||');
-
         $xorCount = substr_count(strtoupper($query), ' XOR');
 
         $conditions = $andCount + $notCount + $orCount + $xorCount;
@@ -323,19 +322,19 @@ class Database {
     public function select($query, $values = "", $wheres = 1, $conditions = 0, $quotes = 0, $symbols = 0, $spacesAllowed = false, $semiColonAllowed = false, $fetchStyleAssoc = false) {
 
         if ($wheres != $this->countWhere($query)) {
-            echo 'w';return "";
+            return "";
         }
 
         if ($conditions != $this->countConditions($query)) {
-            echo 'c';return "";
+            return "";
         }
 
         if ($quotes != $this->countQuotes($query)) {
-            echo 'q';return "";
+            return "";
         }
 
         if ($symbols != $this->countSymbols($query)) {
-            echo 's';return "";
+            return "";
         }
 
         if ($quotes == 0 AND $symbols == 0) {

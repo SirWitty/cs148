@@ -1,1 +1,1 @@
-select sum(fldNumStudents - fldMaxStudents) from tblSections where fldNumStudents>fldMaxStudents;
+select sum(fldNumStudents - fldMaxStudents) as 'Total Number of Excess Students' from tblSections where fldNumStudents>fldMaxStudents;

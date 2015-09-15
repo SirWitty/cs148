@@ -1,1 +1,1 @@
-select distinct fldBuilding, count(fldBuilding) from tblSections group by fldBuilding;
+select distinct fldBuilding, count(fldBuilding) as 'Number of Buildings' from tblSections group by fldBuilding;
