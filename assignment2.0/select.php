@@ -13,7 +13,7 @@
 	<?php require_once('../bin/prettyCode.php'); ?>
 </head>
 <body>
-<?php include('sidebar-left.php'); ?>
+<?php include('../../sidebar-left.php'); ?>
 <main>
         <h1>Samuel William Reinhardt</h1>
 	<h2>CS148 - Assignment2.0</h2>      
