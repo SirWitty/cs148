@@ -13,9 +13,7 @@
 	<?php require_once('../bin/prettyCode.php'); ?>
 </head>
 <body>
-<section class='sidebar left-sidebar'>
-        <?php include '../../filesystem.php'; ?>
-</section>
+<?php include('sidebar-left.php'); ?>
 <main>
         <h1>Samuel William Reinhardt</h1>
 	<h2>CS148 - Assignment2.0</h2>      
@@ -24,12 +22,11 @@
 		<?php for($number=1; $number <= 12; $number++):
 			$num = $number;
 			if ($number<10) $num = '0' . $num; ?>
-			<li>q<?php echo $num ?>. <a href='display.php?number=q<?php echo $num ?>'>SQL query results.</a> <code><?php echo prettify(file_get_contents('q' . $num . '.sql'));?></code></li>			
+			<li>q<?php echo $num ?>. <a href='display.php?number=q<?php echo $num; ?>'>SQL query results.</a> <code><?php echo prettify(file_get_contents('q' . $num . '.sql'));?></code></li>			
 		<?php endfor; ?>
 		</ul>
         </p>
 </main>
-
-<section class='sidebar right-sidebar image-view'></section>
+<?php include('sidebar-right.php'); ?>
 </body>
 </html>
