@@ -1,1 +1,1 @@
-select fldFirstName, fldLastName from tblTeachers where pmkNetid LIKE 'r%d';
+select fldFirstName, fldLastName from tblTeachers where pmkNetid LIKE 'r%o';
