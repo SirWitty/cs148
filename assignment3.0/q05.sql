@@ -1,0 +1,1 @@
+select fldFirstName, fldLastName, SUM(fldNumStudents) as 'Total' from tblTeachers INNER JOIN tblSections ON fnkTeacherNetId = pmkNetId WHERE fldType <> 'LAB' GROUP BY fnkTeacherNetId ORDER BY SUM(fldNumStudents) DESC

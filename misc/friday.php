@@ -19,7 +19,7 @@
 <?php include('../../sidebar-left.php'); ?>
 <main>
 <?php   
-	$whitelisted = false;
+	$whitelisted = true;
 	$number = htmlspecialchars($_GET["number"]);
 	for($num=1;$num<10;$num++){if(strcmp ('q0'.$num,$number)==0) $whitelisted=true;}
 	for($num=10;$num<=12;$num++){if(strcmp ('q'.$num,$number)==0) $whitelisted=true;}
@@ -28,7 +28,7 @@
 		$whichPass = "r"; //flag for which one to use.
 		$dbName = 'SWREINHA_UVM_Courses_Testing';
 		$thisDatabaseReader = new Database($dbUserName, $whichPass, $dbName);
-		$query = rtrim(file_get_contents($number . '.sql')); //prepare the query
+		$query = rtrim(file_get_contents('q01.sql')); //prepare the query
 		$query = rtrim($query,';'); //remove semicolon (alternatively, set allow semi to true in bob's function)
 ?>
 <h1>Samuel William Reinhardt</h1>
@@ -42,6 +42,10 @@
 		$counts = countify($query);
 		$results = $thisDatabaseReader->select($query, "", $counts['where'], $counts['condition'], $counts['quote'], $counts['symbol'], false, false, true);//running     capitalized code so that table headers aren't chopped oddly if they aren't given aliases
 		$prettyCode = prettify($query); //wrap reserved in span
+		$headers = array_keys($results[0]);
+		for ($headers as $key){
+			
+		}	
 	?>
 	<code><?php echo $prettyCode;?><span class='sql-reserved'>;</span></code>
 	... we are given the below table, with <?php echo count($results); ?> rows.

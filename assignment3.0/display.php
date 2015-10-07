@@ -2,8 +2,8 @@
 <html lang=en>
 <head>
         <meta charset=utf-8>
-        <title>CS148 Assignment2.0</title>
-        <meta name="description" content="Homework Assignment 2.0 for CS148">
+        <title>CS148 Assignment3.0</title>
+        <meta name="description" content="Homework Assignment 3.0 for CS148">
         <meta name="author" content="Samuel William Reinhardt">
 
 	<?php 	require_once( "../bin/Database.php"); 	
@@ -21,8 +21,7 @@
 <?php   
 	$whitelisted = false;
 	$number = htmlspecialchars($_GET["number"]);
-	for($num=1;$num<10;$num++){if(strcmp ('q0'.$num,$number)==0) $whitelisted=true;}
-	for($num=10;$num<=12;$num++){if(strcmp ('q'.$num,$number)==0) $whitelisted=true;}
+	for($num=1;$num<=6;$num++){if(strcmp ('q0'.$num,$number)==0) $whitelisted=true;}
 	if($whitelisted):
 		$dbUserName = get_current_user() . '_reader';
 		$whichPass = "r"; //flag for which one to use.
@@ -32,10 +31,7 @@
 		$query = rtrim($query,';'); //remove semicolon (alternatively, set allow semi to true in bob's function)
 ?>
 <h1>Samuel William Reinhardt</h1>
-<h2>CS148 - Assignment2.0 - <?php echo strtoupper($number); ?> Output </h2>      
-<?php if(strcmp($number,'q10')==0){ ?>
-<p>To verify the accuracy of this result, you could go to each class count heads, or you could also manually check every entry in the database. </p> 
-<?php } ?>
+<h2>CS148 - Assignment3.0 - <?php echo strtoupper($number); ?> Output </h2>      
 <p> 	Using the following query...
 
 	<?php 

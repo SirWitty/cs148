@@ -3,7 +3,7 @@ function prettify($code, $type = 'sql') {
 	$replaceList = [];
 	$prettyCode = $code;
 	if(strcmp('sql', $type)===0){	
-		$replaceList = ['select ', ' as ', ' from ', ' where ', ' like ', ' and ', ' lower(', ' count(', ' distinct ', ' group ', ' order ', ' by', ' sum(', 'having', ')', ';'];
+		$replaceList = ['select ', ' as ', ' from ', ' where ', ' like ', ' and ', ' lower(', ' count(', ' distinct(', ' group ', ' order ', ' by', ' sum(', 'having', ')', ';', ' join ',  'inner', ' full ', ' on ',' (', 'AVG(', ];
 		$upperReplace = array_map('strtoupper',$replaceList);
 		$prettyCode = str_replace($replaceList, $upperReplace, $prettyCode); //replace lowercase with uppers
 		$replaceList = $upperReplace;
