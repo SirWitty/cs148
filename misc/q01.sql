@@ -1,1 +1,1 @@
-SELECT  pmkStudentId, fldFirstName, fldLastName, fldStreetAddress, fldCity, fldState, fldZip, fldGender FROM tblStudents ORDER BY fldLastName, fldFirstName;
+SELECT * FROM tblStudents order by fldLastName, fldFirstName limit 10
