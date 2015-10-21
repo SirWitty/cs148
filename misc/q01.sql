@@ -1,1 +1,1 @@
-SELECT * FROM tblStudents order by fldLastName, fldFirstName limit 10
+SELECT * FROM tblStudents order by fldLastName, fldFirstName limit
