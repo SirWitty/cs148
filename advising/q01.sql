@@ -1,1 +1,1 @@
-SELECT fldCourseName, fldSemester, fldYear FROM tblPlannedCourses INNER JOIN tblCourses ON fnkCourseId = pmkCourseId
+SELECT fldCourseName, fldSemester, fldYear FROM tblCourses INNER JOIN tblPlannedCourses ON fnkCourseId = pmkCourseId INNER JOIN tblFourYears ON fnkFourYearId = pmkFourYearId INNER JOIN tblStudents ON fnkStudentId = pmkStudentId

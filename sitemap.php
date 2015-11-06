@@ -17,13 +17,7 @@
 <main>
 	<h1>Samuel William Reinhardt</h1>
 	<p>This is the sitemap for CS148.</p>
-	<p> View the assignments below: 
-		<ul>
-			<li><a href='assignment1.0/index.php'>Assignment 1.0</a></li>
-			<li><a href='assignment2.0/select.php'>Assignment 2.0</a></li>
-			<li><a href='assignment3.0/join.php'>Assignment 3.0</a></li>
-		</ul>
-	</p> 
+	<p> View the assignments via the browser to the left.</p> 
 </main>
 
 <section class='sidebar right-sidebar image-view'></section>
