@@ -18,7 +18,7 @@
 	<h1>Samuel William Reinhardt</h1>
 	<p>This is the sitemap for CS148.</p>
 	<p> View the assignments via the browser to the left.</p> 
-</main>
+	<p>If there are two of something, it is because I symlinked it and am too lazy to fix my script so it doesn't follow them. ie It is the same folder listed twice.</p></main>
 
 <section class='sidebar right-sidebar image-view'></section>
 </body>
